@@ -1,0 +1,64 @@
+<html>
+<!--
+   This is some simple html code for testing the JavaScript htmltotextile.js 
+   for converting HTML to Textile
+   
+   Alpha Version 0.0.1 - P.J.Lawrence 2011
+   
+   Developed for a Redmine plugin, a task I've never got around to finishing..
+   see https://github.com/PeterLawrence/redmine_wysiwyg_textile
+-->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>text input</title>
+</head>
+<body>
+<script type="text/javascript" src="htmltotextile.js"></script>
+<textarea  id='aTextAreaHtml' rows="10" cols="80"><h1>hello</h1>
+<u>underline</u>
+<b>bold</b> <i>italic</i> <em>em italic</em> <br>
+<strong>strong</strong> <cite>cite</cite> <sup>sup</sup> <br>
+<sub>sub</sub> <span>span</span> <del>del</del> <br>
+<code>code</code> <ins>ins</ins> <br>
+
+<table>
+<tr><td>11</td><td>21</td></tr>
+<tr><td>12</td><td>22</td></tr>
+</table>
+
+<ul>
+<li>e1</li>
+<li>e2</li>
+</ul>
+
+</textarea> 
+
+<script language="javascript" type="text/javascript">
+function GetText(TheTextArea) 
+{
+      var text1 = document.getElementById('aTextAreaHtml');
+      var text2 = document.getElementById('preview');
+      text2.innerHTML = text1.value;
+}
+function ConverText(TheTextArea) 
+{
+      var text1 = document.getElementById('aTextAreaHtml');
+      var text2 = document.getElementById('preview');
+      text2.innerHTML = text1.value;
+      text2.innerHTML =HtmlToTextile(text1.value);
+      var text3 = document.getElementById('TextAreaTextile');
+      text3.value =HtmlToTextile(text1.value);
+}
+</script>
+
+<form>
+            <Input type = radio Name = "textilewysiwyg" CHECKED onClick="javascript:ConverText('aTextAreaHtml')">textile
+            <Input type = radio Name = "textilewysiwyg" onClick="javascript:GetText('aTextAreaHtml',1)">wysiwyg
+ </form>
+<textarea  id='TextAreaTextile' rows="10" cols="80">
+</textarea>
+
+<div id='preview'>Preview</div>
+
+</body>
+</html>
